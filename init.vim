@@ -2,6 +2,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 
+Plug 'terryma/vim-expand-region'
+Plug 'airblade/vim-gitgutter'
+
 Plug 'ajmwagar/vim-deus'
 "Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
 Plug 'vim-scripts/YankRing.vim'
@@ -47,7 +50,7 @@ Plug 'airblade/vim-rooter'
 call plug#end()
 colors deus
 "colorscheme gruvbox
-"set nu
+set nu
 
 let mapleader=' '
 nnoremap H ^
@@ -243,4 +246,8 @@ noremap <leader>y :YRShow<CR>
 "============Plug 't9md/vim-choosewin'
 "============
 nmap <leader>e <Plug>(choosewin)
+
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
+
 exec "nohlsearch"

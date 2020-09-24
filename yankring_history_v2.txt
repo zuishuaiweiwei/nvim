@@ -1,3 +1,7 @@
+git push or,V
+git push origin master,V
+Plug 'xolox/vim-misc',V
+",v
 v,v
 vmap gh <C-w>w,V
 n,v
@@ -8,7 +12,6 @@ noremap gh <C-w>w,V
 >,v
 leader,v
 <,v
-",v
 Plug 'vim-scripts/YankRing.vim',v
 Plug 't9md/vim-choosewin',V
 ,V
