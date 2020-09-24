@@ -2,6 +2,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 Plug 'terryma/vim-expand-region'
 Plug 'airblade/vim-gitgutter'
 
@@ -249,5 +252,8 @@ nmap <leader>e <Plug>(choosewin)
 
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
+noremap <F11> :Goyo<CR>
+nmap <F12> <Plug>(Limelight)
+let g:limelight_conceal_ctermfg = 'gray'
 
 exec "nohlsearch"

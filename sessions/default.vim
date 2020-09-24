@@ -1,6 +1,6 @@
 " ~/.config/nvim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 24 September 2020 at 13:06:09.
+" Created by session.vim 2.13.1 on 24 September 2020 at 14:01:48.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -16,17 +16,18 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd /
+cd ~/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 badd +5 /push.sh
-badd +0 /nvim.sh
+badd +5 /nvim.sh
+badd +256 init.vim
 argglobal
 %argdel
 $argadd /push.sh
-edit /nvim.sh
+edit init.vim
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -45,12 +46,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 17) / 35)
+let s:l = 259 - ((34 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 017|
+259
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
 "   silent exe 'bwipe ' . s:wipebuf
