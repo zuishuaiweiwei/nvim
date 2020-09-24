@@ -1,0 +1,24 @@
+v,v
+vmap gh <C-w>w,V
+n,v
+e,v
+r,v
+o,v
+noremap gh <C-w>w,V
+>,v
+leader,v
+<,v
+",v
+Plug 'vim-scripts/YankRing.vim',v
+Plug 't9md/vim-choosewin',V
+,V
+"============"============Plug 'vim-scripts/YankRing.vim'"============,v
+\,v
+ ,v
+2,v
+2     Plug 'vim-scripts/YankRing.vim'\n,V
+Plug 'pechorin/any-jump.vim',v
+Plug 'vim-scripts/YankRing.vim',V
+"============"============Plug 'pechorin/any-jump.vim'"============,v
+let g:any_jump_window_width_ratio  = 0.8,V
+let g:any_jump_window_height_ratio = 0.9,V
