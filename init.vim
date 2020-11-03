@@ -245,7 +245,7 @@ let g:any_jump_window_height_ratio = 0.9
 "============
 "============Plug 'vim-scripts/YankRing.vim'
 "============
-let g:yankring_history_dir = '~/.config/nvim'
+let g:yankring_history_dir = '~/.config'
 noremap <leader>y :YRShow<CR>
 
 "============
@@ -259,6 +259,9 @@ noremap <F11> :Goyo<CR>
 nmap <F12> <Plug>(Limelight)
 let g:limelight_conceal_ctermfg = 'gray'
 
+"============
+"============Plug 'Yggdroot/indentLine'
+"============
 let g:indent_guides_guide_size=1
-let g:indent_guides_start_level=2
+"let g:indent_guides_start_level=1
 exec "nohlsearch"
