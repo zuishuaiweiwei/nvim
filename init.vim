@@ -40,7 +40,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'   }
 Plug 'junegunn/fzf.vim'
 
-Plug 'neoclide/coc.nvim' ", {'tag': 'v0.0.78'}"
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ervandew/supertab'
 
 Plug 'terryma/vim-smooth-scroll'
@@ -50,6 +50,7 @@ Plug 'majutsushi/tagbar'
 Plug 'chiel92/vim-autoformat'
 
 Plug 'airblade/vim-rooter'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 colors deus
 "colorscheme gruvbox
@@ -181,6 +182,8 @@ inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<
 nmap tt :CocCommand explorer<CR>
 nmap <leader>t <Plug>(coc-translator-p)
 vmap <leader>t <Plug>(coc-translator-p)
+let g:coc_global_extensions=['coc-html']
+
 
 "===========
 "===========Plug 'terryma/vim-smooth-scroll'
@@ -219,7 +222,7 @@ let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
 nnoremap <S-u> :LeaderfBuffer<CR>
 nnoremap <S-i> :LeaderfFile<CR>
-"nnoremap <S-o> :LeaderfMru<CR>
+nnoremap <S-o> :LeaderfMru<CR>
 "let g:Lf_CommandMap = {'<C-K>': ['<A-K>'], '<C-J>': ['<A-J>']}
 set ambiwidth=double
 
@@ -256,4 +259,6 @@ noremap <F11> :Goyo<CR>
 nmap <F12> <Plug>(Limelight)
 let g:limelight_conceal_ctermfg = 'gray'
 
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
 exec "nohlsearch"
