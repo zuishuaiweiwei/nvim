@@ -1,60 +1,80 @@
 call plug#begin('~/.config/nvim/plugged')
+"保存关闭时vim状态
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 
+"沉浸式阅读
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
+"选中时可以一块一块的扩展选中内容
 Plug 'terryma/vim-expand-region'
+"git
 Plug 'airblade/vim-gitgutter'
-
+"主题
 Plug 'ajmwagar/vim-deus'
 "Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+"剪贴板历史
 Plug 'vim-scripts/YankRing.vim'
-
+"
 Plug 'tpope/vim-surround'
-
+" buffer样式
 Plug 'bling/vim-bufferline'
-
+" 快速跳转
 Plug 'pechorin/any-jump.vim'
 
 Plug 'rking/ag.vim'
 
 Plug 'mg979/vim-xtabline'
-
+" 多窗口时可以选择窗口
 Plug 't9md/vim-choosewin'
-
+" 快速跳转
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"加快j k 速度
 Plug 'rhysd/accelerated-jk'
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-
 Plug 'mbbill/undotree'
+"显示空白符颜色
 Plug 'ntpeters/vim-better-whitespace'
+"增强 . 的功能
 Plug 'tpope/vim-repeat'
+"彩色括号
 Plug 'luochen1990/rainbow'
+"自动括号
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'   }
 Plug 'junegunn/fzf.vim'
-
+"自动补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"增强tab
 Plug 'ervandew/supertab'
-
+"增强 Crtl+d Crtl+f
 Plug 'terryma/vim-smooth-scroll'
 
 Plug 'morhetz/gruvbox'
+"显示文件结构
 Plug 'majutsushi/tagbar'
+"格式化
 Plug 'chiel92/vim-autoformat'
-
+"切换vim工作目录
 Plug 'airblade/vim-rooter'
+"显示缩进虚线
 Plug 'Yggdroot/indentLine'
+"切换tab
+Plug 'ap/vim-buftabline'
+"高亮光标下所有的单词
+Plug 'RRethy/vim-illuminate'
 call plug#end()
 colors deus
 "colorscheme gruvbox
 set nu
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 let mapleader=' '
 nnoremap H ^
@@ -116,7 +136,7 @@ let g:undotree_SplitWidth = 24
 "============
 noremap <silent> <C-h> :History<CR>
 noremap <silent> <C-l> :Lines<CR>
-"noremap <silent> bb :Buffers<CR>
+noremap <silent> bb :Buffers<CR>
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
@@ -136,27 +156,27 @@ omap / <Plug>(easymotion-tn)
 
 let g:rainbow_active = 1
 let g:rainbow_conf = {
-			\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-			\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-			\   'operators': '_,_',
-			\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-			\   'separately': {
-			\       '*': {},
-			\       'tex': {
-			\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-			\       },
-			\       'lisp': {
-			\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-			\       },
-			\       'vim': {
-			\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-			\       },
-			\       'html': {
-			\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-			\       },
-			\       'css': 0,
-			\   }
-			\}
+            \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+            \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+            \   'operators': '_,_',
+            \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+            \   'separately': {
+            \       '*': {},
+            \       'tex': {
+            \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+            \       },
+            \       'lisp': {
+            \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+            \       },
+            \       'vim': {
+            \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+            \       },
+            \       'html': {
+            \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+            \       },
+            \       'css': 0,
+            \   }
+            \}
 
 
 
@@ -165,7 +185,7 @@ let g:airline_theme='light'
 set autoread
 
 if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "============
@@ -263,5 +283,17 @@ let g:limelight_conceal_ctermfg = 'gray'
 "============Plug 'Yggdroot/indentLine'
 "============
 let g:indent_guides_guide_size=1
-"let g:indent_guides_start_level=1
+let g:indent_guides_start_level=2
+
+"============
+"============Plug 'ap/vim-buftabline'
+"============
+set hidden
+nnoremap <leader>- :bnext<CR>
+"nnoremap <leader>+ :bprev<CR>
+
+"============
+"============Plug 'RRethy/vim-illuminate'
+"============
+let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python','java','text','txt','go']
 exec "nohlsearch"

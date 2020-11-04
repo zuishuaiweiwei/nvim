@@ -1,6 +1,6 @@
 " ~/.config/nvim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 03 November 2020 at 15:00:20.
+" Created by session.vim 2.13.1 on 04 November 2020 at 11:56:54.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -21,7 +21,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 init.vim
+badd +1 /usr/local/hexo-wei/source/.gitignore
+badd +455 ~/init.sh
+badd +281 init.vim
 argglobal
 %argdel
 $argadd init.vim
@@ -44,12 +46,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 248 - ((15 * winheight(0) + 17) / 35)
+let s:l = 299 - ((34 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-248
-normal! 040|
+299
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
 "   silent exe 'bwipe ' . s:wipebuf
