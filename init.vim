@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 "保存关闭时vim状态
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+"Plug 'mhinz/vim-startify'
 
 "沉浸式阅读
 Plug 'junegunn/goyo.vim'
@@ -42,7 +43,7 @@ Plug 'ntpeters/vim-better-whitespace'
 "增强 . 的功能
 Plug 'tpope/vim-repeat'
 "彩色括号
-Plug 'luochen1990/rainbow'
+Plug 'luochen1991/rainbow'
 "自动括号
 Plug 'jiangmiao/auto-pairs'
 
@@ -68,6 +69,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-buftabline'
 "高亮光标下所有的单词
 Plug 'RRethy/vim-illuminate'
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 colors deus
 "colorscheme gruvbox
@@ -234,7 +237,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '', '▏']
 "============
 "============ Plug 'Yggdroot/LeaderF'
 "============
-nnoremap bb :LeaderfBufferAll<CR>
+"nnoremap bb :LeaderfBufferAll<CR>
 let g:Lf_PreviewInPopup = 1
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewCode = 1
@@ -290,10 +293,11 @@ let g:indent_guides_start_level=2
 "============
 set hidden
 nnoremap <leader>- :bnext<CR>
-"nnoremap <leader>+ :bprev<CR>
+nnoremap <leader>= :bprev<CR>
 
 "============
 "============Plug 'RRethy/vim-illuminate'
 "============
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python','java','text','txt','go']
+nnoremap ; :noh<CR>
 exec "nohlsearch"
