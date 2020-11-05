@@ -22,7 +22,7 @@ Plug 'tpope/vim-surround'
 " buffer样式
 Plug 'bling/vim-bufferline'
 " 快速跳转
-Plug 'pechorin/any-jump.vim'
+"Plug 'pechorin/any-jump.vim'
 
 Plug 'rking/ag.vim'
 
@@ -43,14 +43,12 @@ Plug 'ntpeters/vim-better-whitespace'
 "增强 . 的功能
 Plug 'tpope/vim-repeat'
 "彩色括号
-Plug 'luochen1991/rainbow'
+Plug 'luochen1990/rainbow'
 "自动括号
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'   }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf','do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"自动补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "增强tab
 Plug 'ervandew/supertab'
 "增强 Crtl+d Crtl+f
@@ -69,8 +67,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-buftabline'
 "高亮光标下所有的单词
 Plug 'RRethy/vim-illuminate'
-
+"切换窗口
+Plug 'spolu/dwm.vim'
+"相同单词多光标
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'brooth/far.vim'
+"自动补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 colors deus
 "colorscheme gruvbox
@@ -78,6 +83,9 @@ set nu
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"set shell=/bin/zsh
+"let $SHELL = "/bin/zsh"
+"set mouse=a
 
 let mapleader=' '
 nnoremap H ^
@@ -87,6 +95,7 @@ vnoremap L $
 vnoremap Y "+y
 map - Nzz
 map = nzz
+nnoremap <leader>b :bd<CR>
 nnoremap <leader>l d$
 nnoremap <leader>h d0
 noremap <leader>w :w<CR>
@@ -97,11 +106,11 @@ noremap <leader>d yyp
 "noremap <leader>i
 "noremap <leader>o
 "noremap <leader>p
-"
 "noremap <leader>a
 "noremap <leader>s
 noremap gh <C-w>w
 noremap gj <C-w>j
+nmap <Tab> <C-j>
 "noremap <leader>k
 "
 "noremap <leader>z
@@ -139,11 +148,10 @@ let g:undotree_SplitWidth = 24
 "============
 noremap <silent> <C-h> :History<CR>
 noremap <silent> <C-l> :Lines<CR>
-noremap <silent> bb :Buffers<CR>
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
 "let $FZF_DEFAULT_OPTS = '--bind !:up,@:down'
+
 "============
 "============  Plug 'xolox/vim-session'
 "============
@@ -205,8 +213,7 @@ inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<
 nmap tt :CocCommand explorer<CR>
 nmap <leader>t <Plug>(coc-translator-p)
 vmap <leader>t <Plug>(coc-translator-p)
-let g:coc_global_extensions=['coc-html']
-
+let g:coc_global_extensions=['coc-html','coc-java','coc-go','coc-css','coc-xml','coc-json','coc-explorer','coc-sh','coc-sql','coc-yaml','coc-tsserver','coc-explorer','coc-calc','coc-fzf-preview']
 
 "===========
 "===========Plug 'terryma/vim-smooth-scroll'
@@ -256,12 +263,13 @@ let g:AutoPairsFlyMode = 0
 au Filetype xml let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 au Filetype sql let b:AutoPairs = {'(':')',"'":"'",'"':'"'}
 au Filetype text let b:AutoPairs = {}
+au Filetype json let b:AutoPairs = {'{':'}'}
 let g:paste_easy_enable=1
 
 "============
 "============Plug 'pechorin/any-jump.vim'
 "============
-nnoremap <leader>j :AnyJump<CR>
+"nnoremap <leader>j :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
@@ -275,6 +283,21 @@ noremap <leader>y :YRShow<CR>
 "============Plug 't9md/vim-choosewin'
 "============
 nmap <leader>e <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
+let g:choosewin_color_overlay = {
+            \ 'gui': ['DodgerBlue3', 'DodgerBlue3'],
+            \ 'cterm': [25, 25]
+            \ }
+let g:choosewin_color_overlay_current = {
+            \ 'gui': ['firebrick1', 'firebrick1'],
+            \ 'cterm': [124, 124]
+            \ }
+let g:choosewin_blink_on_land      = 0 " don't blink at land
+let g:choosewin_statusline_replace = 0 " don't replace statusline
+let g:choosewin_tabline_replace    = 0 " don't replace tabline
+
+
+
 
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
@@ -299,5 +322,11 @@ nnoremap <leader>= :bprev<CR>
 "============Plug 'RRethy/vim-illuminate'
 "============
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python','java','text','txt','go']
+let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0
+
+
+let g:dwm_map_keys=1
+
 nnoremap ; :noh<CR>
-exec "nohlsearch"
+"exec "nohlsearch"

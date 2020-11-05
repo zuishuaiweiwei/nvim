@@ -1,6 +1,6 @@
 " ~/.config/nvim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 04 November 2020 at 14:43:31.
+" Created by session.vim 2.13.1 on 05 November 2020 at 13:43:32.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -21,12 +21,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +141 init.vim
-badd +256 ~/init.sh
+badd +0 .git/COMMIT_EDITMSG
 argglobal
 %argdel
-$argadd init.vim
-edit init.vim
+$argadd .git/COMMIT_EDITMSG
+edit .git/COMMIT_EDITMSG
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -45,18 +44,18 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 17) / 35)
+let s:l = 45 - ((9 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+45
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
 "   silent exe 'bwipe ' . s:wipebuf
 endif
 " unlet! s:wipebuf
-set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToOFI
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToOF
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
