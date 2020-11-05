@@ -86,7 +86,7 @@ set expandtab
 "set shell=/bin/zsh
 "let $SHELL = "/bin/zsh"
 "set mouse=a
-
+nnoremap <leader><leader><tab> :source $MYVIMRC<CR>
 let mapleader=' '
 nnoremap H ^
 nnoremap L $
@@ -276,7 +276,7 @@ let g:any_jump_window_height_ratio = 0.9
 "============
 "============Plug 'vim-scripts/YankRing.vim'
 "============
-let g:yankring_history_dir = '~/.config'
+let g:yankring_history_dir = '~/.config/nvim'
 noremap <leader>y :YRShow<CR>
 
 "============
