@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 "保存关闭时vim状态
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+"Plug 'thaerkh/vim-workspace'
 "自动补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -71,6 +72,8 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'brooth/far.vim'
 "切换缓冲区
 Plug 'bsdelf/bufferhint'
+"增强搜索
+Plug 'haya14busa/incsearch.vim'
 
 call plug#end()
 
@@ -254,6 +257,24 @@ let g:strip_whitespace_confirm = 0
 "============Plug 'bsdelf/bufferhint'
 "============
 let g:bufferhint_SortMode = 1
-nnoremap <leader><tab> :call bufferhint#Popup()<CR>
+nnoremap <leader><tab> :call bufferhint#Popup()<cr>
+
+"============
+"============ Plug 'haya14busa/incsearch.vim'
+"============
+map /  <plug>(incsearch-stay)
+
+
+"============
+"============Plug 'thaerkh/vim-workspace'
+"============
+let g:workspace_session_directory = $HOME.'/.config/nvim/sessions/'
+let g:workspace_session_name = 'workspace-session.vim'
+nnoremap <leader>s :ToggleWorkspace<CR>
+let g:workspace_create_new_tabs = 0
+"let g:workspace_autosave_always = 1
+let g:workspace_autosave = 0
+
 
 source ~/.config/nvim/config/coc.vim
+
