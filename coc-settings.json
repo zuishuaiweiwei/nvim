@@ -66,13 +66,10 @@
         "default": "zh",
         "description": "Target language"
     },
-    "translator.engines": {
-        "type": "array",
-        "default": [
+    "translator.engines": [
             "bing",
             "google",
             "youdao",
             "haici"
         ]
-    }
 }

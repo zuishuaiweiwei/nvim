@@ -1,36 +1,34 @@
+source ~/.config/nvim/config/baseKeyMap.vim
+
 call plug#begin('~/.config/nvim/plugged')
 "保存关闭时vim状态
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
-"Plug 'mhinz/vim-startify'
+"自动补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "沉浸式阅读
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-"选中时可以一块一块的扩展选中内容
-Plug 'terryma/vim-expand-region'
 "git
 Plug 'airblade/vim-gitgutter'
 "主题
 Plug 'ajmwagar/vim-deus'
-"Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
 "剪贴板历史
 Plug 'vim-scripts/YankRing.vim'
 "
 Plug 'tpope/vim-surround'
 " buffer样式
-Plug 'bling/vim-bufferline'
-" 快速跳转
-"Plug 'pechorin/any-jump.vim'
+"Plug 'bling/vim-bufferline'
 
 Plug 'rking/ag.vim'
 
-Plug 'mg979/vim-xtabline'
 " 多窗口时可以选择窗口
 Plug 't9md/vim-choosewin'
 " 快速跳转
 Plug 'easymotion/vim-easymotion'
+"状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "加快j k 速度
@@ -46,7 +44,7 @@ Plug 'tpope/vim-repeat'
 Plug 'luochen1990/rainbow'
 "自动括号
 Plug 'jiangmiao/auto-pairs'
-
+"搜索文件名称
 Plug 'junegunn/fzf', { 'dir': '~/.fzf','do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "增强tab
@@ -67,73 +65,28 @@ Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-buftabline'
 "高亮光标下所有的单词
 Plug 'RRethy/vim-illuminate'
-"切换窗口
-Plug 'spolu/dwm.vim'
 "相同单词多光标
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-"Plug 'terryma/vim-multiple-cursors'
+"搜索替换
 Plug 'brooth/far.vim'
-"自动补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"切换缓冲区
+Plug 'bsdelf/bufferhint'
 
 call plug#end()
-colors deus
-"colorscheme gruvbox
-set nu
-set tabstop=4
-set shiftwidth=4
-set expandtab
-"set shell=/bin/zsh
-"let $SHELL = "/bin/zsh"
-"set mouse=a
-nnoremap <leader><leader><tab> :source $MYVIMRC<CR>
-let mapleader=' '
-nnoremap H ^
-nnoremap L $
-vnoremap H ^
-vnoremap L $
-vnoremap Y "+y
-map - Nzz
-map = nzz
-nnoremap <leader>b :bd<CR>
-nnoremap <leader>l d$
-nnoremap <leader>h d0
-noremap <leader>w :w<CR>
-noremap <leader>q :q!<CR>
-noremap <leader>d yyp
-"noremap <leader>r
-"noremap <leader>u
-"noremap <leader>i
-"noremap <leader>o
-"noremap <leader>p
-"noremap <leader>a
-"noremap <leader>s
-noremap gh <C-w>w
-noremap gj <C-w>j
-nmap <Tab> <C-j>
-"noremap <leader>k
-"
-"noremap <leader>z
-"noremap <leader>x
-"noremap <leader>c
-"noremap <leader>v
-"noremap <leader>n
-"noremap <leader>m
-"noremap <leader>,
-"noremap <leader>;
-nnoremap <C-A> gg^vG$
-nnoremap <C-s> :w<CR>
-map <S-CR> $a<CR><ESC>
-nnoremap < <<
-nnoremap > >>
 
+
+colors deus
+
+"============
+"============ Plug 'rhysd/accelerated-jk'
+"============
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
 "============
 "============ Plug 'mbbill/undotree'
 "============
-map <F5> :UndotreeToggle<CR>
+map <F1> :UndotreeToggle<CR>
 set undodir=$HOME."/.undodir"
 set undofile
 let g:undotree_DiffAutoOpen = 1
@@ -146,7 +99,6 @@ let g:undotree_SplitWidth = 24
 "============
 "============  fzf
 "============
-noremap <silent> <C-h> :History<CR>
 noremap <silent> <C-l> :Lines<CR>
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -162,9 +114,12 @@ let g:session_autosave_to = 'default'
 let g:session_directory='~/.config/nvim/sessions'
 let SessionLoad = 1
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
 
+"============
+"============ Plug 'luochen1990/rainbow'
+"============
 let g:rainbow_active = 1
 let g:rainbow_conf = {
             \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -189,31 +144,19 @@ let g:rainbow_conf = {
             \   }
             \}
 
+"============
+"============ Plug 'vim-airline/vim-airline'
+"============Plug 'vim-airline/vim-airline-themes'
 
-
-set scrolloff=5
-let g:airline_theme='light'
-set autoread
-
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+let g:airline_theme='deus'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:airline#extensions#whitespace#enabled = 0
+if !exists('g:airline_symbols')
+    let g:airline_symbols={}
 endif
-
-"============
-"============ coc
-"============
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-
-nmap tt :CocCommand explorer<CR>
-nmap <leader>t <Plug>(coc-translator-p)
-vmap <leader>t <Plug>(coc-translator-p)
-let g:coc_global_extensions=['coc-html','coc-java','coc-go','coc-css','coc-xml','coc-json','coc-explorer','coc-sh','coc-sql','coc-yaml','coc-tsserver','coc-explorer','coc-calc','coc-fzf-preview']
 
 "===========
 "===========Plug 'terryma/vim-smooth-scroll'
@@ -225,13 +168,6 @@ noremap <C-d> :call smooth_scroll#up(&scroll*2, 8, 4)<CR>
 "=========== Plug 'chiel92/vim-autoformat'
 "===========
 map <F4> :Autoformat<CR>
-
-"===========
-"=========== Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
-"===========
-"map <F3> :Defx -toggle -auto-cd -split=vertical -winwidth=30 -direction=topleft -session-file=/root/.config/nvim/defx_session<CR>
-
-
 
 "============
 "============ Plug 'airblade/vim-rooter'
@@ -266,12 +202,6 @@ au Filetype text let b:AutoPairs = {}
 au Filetype json let b:AutoPairs = {'{':'}'}
 let g:paste_easy_enable=1
 
-"============
-"============Plug 'pechorin/any-jump.vim'
-"============
-"nnoremap <leader>j :AnyJump<CR>
-let g:any_jump_window_width_ratio  = 0.8
-let g:any_jump_window_height_ratio = 0.9
 
 "============
 "============Plug 'vim-scripts/YankRing.vim'
@@ -296,11 +226,6 @@ let g:choosewin_blink_on_land      = 0 " don't blink at land
 let g:choosewin_statusline_replace = 0 " don't replace statusline
 let g:choosewin_tabline_replace    = 0 " don't replace tabline
 
-
-
-
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
 noremap <F11> :Goyo<CR>
 nmap <F12> <Plug>(Limelight)
 let g:limelight_conceal_ctermfg = 'gray'
@@ -315,8 +240,7 @@ let g:indent_guides_start_level=2
 "============Plug 'ap/vim-buftabline'
 "============
 set hidden
-nnoremap <leader>- :bnext<CR>
-nnoremap <leader>= :bprev<CR>
+nnoremap <tab> :bnext<CR>
 
 "============
 "============Plug 'RRethy/vim-illuminate'
@@ -326,7 +250,10 @@ let g:strip_whitespace_on_save = 1
 let g:strip_whitespace_confirm = 0
 
 
-let g:dwm_map_keys=1
+"============
+"============Plug 'bsdelf/bufferhint'
+"============
+let g:bufferhint_SortMode = 1
+nnoremap <leader><tab> :call bufferhint#Popup()<CR>
 
-nnoremap ; :noh<CR>
-"exec "nohlsearch"
+source ~/.config/nvim/config/coc.vim
